@@ -1,6 +1,5 @@
-nvidia-settings-updates (280.13-0ubuntu1) UNRELEASED; urgency=low
+nvidia-settings-updates (280.13-0ubuntu1) oneiric; urgency=low
 
-  * 
+  * First release.
 
- -- Alberto Milone <alberto.milone@canonical.com>  Thu, 11 Aug 2011 12:25:06 +0200
-
+ -- Alberto Milone <alberto.milone@canonical.com>  Thu, 11 Aug 2011 13:21:52 +0200
