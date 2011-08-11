@@ -1,4 +1,4 @@
-Source: nvidia-settings
+Source: nvidia-settings-updates
 Section: contrib/x11
 Priority: optional
 XSBC-Original-Maintainer: Debian NVIDIA Maintainers <pkg-nvidia-devel@lists.alioth.debian.org>
@@ -10,7 +10,7 @@ Standards-Version: 3.8.0
 Vcs-Git: git://github.com/tseliot/nvidia-settings.git
 Vcs-Browser: http://github.com/tseliot/nvidia-settings
 
-Package: nvidia-settings
+Package: nvidia-settings-updates
 Architecture: i386 amd64 lpia
 Depends: screen-resolution-extra (>= 0.12), ${shlibs:Depends}
 Conflicts: libxnvctrl-dev
