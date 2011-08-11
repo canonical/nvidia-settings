@@ -27,7 +27,7 @@ mandir               := /usr/share/man/man1
 PKG_mandir           := $(PKG_libdir)/share/man/man1
 
 # Priority of the alternative
-alt_priority         := 9700
+alt_priority         := 9701
 
 .PHONY: regen-from-templates
 regen-from-templates:
