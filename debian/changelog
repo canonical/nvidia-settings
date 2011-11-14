@@ -1,8 +1,10 @@
-nvidia-settings-updates (285.05.09-0ubuntu1) UNRELEASED; urgency=low
+nvidia-settings-updates (285.05.09-0ubuntu1) precise; urgency=low
 
-  * 
+  * New upstream release.
+  * debian/control{.in}:
+    - Add python-gtk2 and pkg-config dependencies (LP: #721453).
 
- -- Alberto Milone <alberto.milone@canonical.com>  Mon, 14 Nov 2011 17:06:29 +0100
+ -- Alberto Milone <alberto.milone@canonical.com>  Mon, 14 Nov 2011 17:20:07 +0100
 
 nvidia-settings-updates (280.13-0ubuntu1) oneiric; urgency=low
 
