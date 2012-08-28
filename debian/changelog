@@ -1,3 +1,9 @@
+nvidia-settings-updates (304.43-0ubuntu1) UNRELEASED; urgency=low
+
+  * 
+
+ -- Alberto Milone <alberto.milone@canonical.com>  Tue, 28 Aug 2012 14:05:48 +0200
+
 nvidia-settings-updates (302.17-0ubuntu2) quantal; urgency=low
 
   * Rename build to build-arch and make build depend on build-arch.
