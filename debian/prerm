@@ -1,15 +1,15 @@
 #!/bin/sh
-# prerm script for nvidia-settings-updates
+# prerm script for nvidia-settings-experimental
 #
 # Copyright (C) 2011 Canonical Ltd
 # Authors: Alberto Milone
 
 
-PACKAGE_NAME=nvidia-settings-updates
+PACKAGE_NAME=nvidia-settings-experimental
 
 case "$1" in
 	remove)
-		update-alternatives --remove nvidia_setting_conf /usr/lib/nvidia-settings-updates/ld.so.conf
+		update-alternatives --remove nvidia_setting_conf /usr/lib/nvidia-settings-experimental/ld.so.conf
 
 		# Trigger gmenu so as to update the gnome menu
 		dpkg-trigger --by-package=$PACKAGE_NAME gmenucache || true
