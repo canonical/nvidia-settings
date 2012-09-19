@@ -2,7 +2,8 @@
 #
 # Copyright (C) 2009 Canonical Ltd.
 
-PKG_name    := nvidia-settings-experimental
+PKG_flavour := $(shell dpkg-parsechangelog | sed -n 's/^Source: //p' | sed 's/nvidia\-settings\-//g')
+PKG_name    := nvidia-settings-$(PKG_flavour)
 PKG_version := $(shell dpkg-parsechangelog | awk -F' ' '/^Version:/ {print $$2}' | awk -F- '{print $$1}')
 PKG_source  := $(shell dpkg-parsechangelog | sed -n 's/^Source: //p')
 bindir      := /usr/bin
@@ -52,6 +53,7 @@ regen-from-templates:
                         -e "s|#PKGBINDIR#|$(PKG_bindir)|g" \
                         -e "s|#PKGLIBDIR#|$(PKG_libdir)|g" \
                         -e "s|#PKGNAME#|$(PKG_name)|g" \
+                        -e "s|#FLAVOUR#|$(PKG_flavour)|g" \
                         -e "s|#SRCNAME#|$(PKG_source)|g" \
                         -e "s|#INCLUDEDIR#|$(includedir)|g" \
                         -e "s|#PKGINCLUDEDIR#|$(PKG_includedir)|g" \
