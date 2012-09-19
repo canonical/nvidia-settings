@@ -1,5 +1,5 @@
-nvidia-settings-experimental-304 (304.48-0ubuntu1) UNRELEASED; urgency=low
+nvidia-settings-experimental-304 (304.48-0ubuntu1) quantal; urgency=low
 
   * Initial release (LP: #1050674).
 
- -- Alberto Milone <alberto.milone@canonical.com>  Wed, 19 Sep 2012 12:16:41 +0200
+ -- Alberto Milone <alberto.milone@canonical.com>  Wed, 19 Sep 2012 13:22:57 +0200
