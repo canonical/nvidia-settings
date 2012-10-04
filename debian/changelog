@@ -1,8 +1,13 @@
-nvidia-settings-updates (304.51-0ubuntu1) UNRELEASED; urgency=low
+nvidia-settings-updates (304.51-0ubuntu1) quantal; urgency=low
 
-  * 
+  * debian/control.in:
+    - Correct typo.
+  * New upstream release:
+    - Fixed a bug that sometimes caused the display layout area
+      of the nvidia-settings control panel to be laid out
+      incorrectly.
 
- -- Alberto Milone <alberto.milone@canonical.com>  Thu, 04 Oct 2012 10:42:27 +0200
+ -- Alberto Milone <alberto.milone@canonical.com>  Thu, 04 Oct 2012 13:01:06 +0200
 
 nvidia-settings-updates (304.43-0ubuntu2) quantal; urgency=low
 
