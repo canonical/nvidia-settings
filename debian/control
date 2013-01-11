@@ -1,4 +1,4 @@
-Source: nvidia-settings-experimental-310
+Source: nvidia-settings-310
 Section: contrib/x11
 Priority: optional
 XSBC-Original-Maintainer: Debian NVIDIA Maintainers <pkg-nvidia-devel@lists.alioth.debian.org>
@@ -10,7 +10,7 @@ Standards-Version: 3.8.0
 Vcs-Git: git://github.com/tseliot/nvidia-settings.git
 Vcs-Browser: http://github.com/tseliot/nvidia-settings
 
-Package: nvidia-settings-experimental-310
+Package: nvidia-settings-310
 Architecture: i386 amd64 lpia
 Depends: python-gtk2, pkg-config, screen-resolution-extra (>= 0.12), ${shlibs:Depends}
 Conflicts: libxnvctrl-dev, nvidia-settings, nvidia-settings-updates,

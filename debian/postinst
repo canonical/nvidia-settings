@@ -3,17 +3,17 @@
 # Authors: Alberto Milone
 set -e
 
-PACKAGE_NAME=nvidia-settings-experimental-310
+PACKAGE_NAME=nvidia-settings-310
 
 case "$1" in
     configure)
         # Deal with alternatives
         update-alternatives --force \
-            --install /etc/ld.so.conf.d/nvidia_settings.conf nvidia_settings_conf /usr/lib/nvidia-settings-experimental-310/ld.so.conf 9701 \
-            --slave /usr/share/man/man1/nvidia-settings.1.gz man_nvidiasettings.gz /usr/lib/nvidia-settings-experimental-310/share/man/man1/alt-nvidia-settings-experimental-310.1.gz \
-            --slave /usr/bin/nvidia-settings nvidia_settings /usr/lib/nvidia-settings-experimental-310/bin/nvidia-settings \
-            --slave /usr/include/NVCtrl nvctrl_include /usr/lib/nvidia-settings-experimental-310/include/NVCtrl \
-            --slave /usr/lib/libXNVCtrl.a libxnvctrl.a /usr/lib/nvidia-settings-experimental-310/libXNVCtrl.a
+            --install /etc/ld.so.conf.d/nvidia_settings.conf nvidia_settings_conf /usr/lib/nvidia-settings-310/ld.so.conf 9701 \
+            --slave /usr/share/man/man1/nvidia-settings.1.gz man_nvidiasettings.gz /usr/lib/nvidia-settings-310/share/man/man1/alt-nvidia-settings-310.1.gz \
+            --slave /usr/bin/nvidia-settings nvidia_settings /usr/lib/nvidia-settings-310/bin/nvidia-settings \
+            --slave /usr/include/NVCtrl nvctrl_include /usr/lib/nvidia-settings-310/include/NVCtrl \
+            --slave /usr/lib/libXNVCtrl.a libxnvctrl.a /usr/lib/nvidia-settings-310/libXNVCtrl.a
 
         # ldconfig needs to be run immediately as we're changing /etc/ld.so.conf.d/ with
         # alternatives.
