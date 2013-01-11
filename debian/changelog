@@ -1,5 +1,6 @@
-nvidia-settings-experimental-310 (310.14-0ubuntu1) quantal-proposed; urgency=low
+nvidia-settings-310 (310.19-0ubuntu1) UNRELEASED; urgency=low
 
-  * New upstream release (LP: #1047681).
+  * 
 
- -- Alberto Milone <alberto.milone@canonical.com>  Mon, 22 Oct 2012 08:46:05 +0200
+ -- Alberto Milone <alberto.milone@canonical.com>  Fri, 11 Jan 2013 11:37:03 +0100
+
