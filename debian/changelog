@@ -1,5 +1,5 @@
-nvidia-settings-310-updates (310.19-0ubuntu1) raring; urgency=low
+nvidia-settings-313-updates (313.18-0ubuntu1) UNRELEASED; urgency=low
 
-  * Initial release (LP: #1086718).
+  * Initial release (LP: #1144629).
 
- -- Alberto Milone <alberto.milone@canonical.com>  Fri, 11 Jan 2013 13:05:56 +0100
+ -- Alberto Milone <alberto.milone@canonical.com>  Mon, 04 Mar 2013 17:06:07 +0100
