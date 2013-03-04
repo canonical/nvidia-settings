@@ -1,5 +1,5 @@
 #! /bin/sh
-# postrm script for nvidia-settings-310-updates
+# postrm script for nvidia-settings-313-updates
 #
 # see: dh_installdeb(1)
 #
@@ -21,10 +21,10 @@ set -e
 
 case "$1" in
     remove|purge)
-        # This should make sure that /usr/lib/nvidia-settings-310-updates is
+        # This should make sure that /usr/lib/nvidia-settings-313-updates is
         # removed even if some links are left.
         # See LP: #540143
-        rm -Rf /usr/lib/nvidia-settings-310-updates
+        rm -Rf /usr/lib/nvidia-settings-313-updates
     ;;
 
     upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)

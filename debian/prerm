@@ -1,15 +1,15 @@
 #!/bin/sh
-# prerm script for nvidia-settings-310-updates
+# prerm script for nvidia-settings-313-updates
 #
 # Copyright (C) 2011 Canonical Ltd
 # Authors: Alberto Milone
 
 
-PACKAGE_NAME=nvidia-settings-310-updates
+PACKAGE_NAME=nvidia-settings-313-updates
 
 case "$1" in
 	remove)
-		update-alternatives --remove nvidia_setting_conf /usr/lib/nvidia-settings-310-updates/ld.so.conf
+		update-alternatives --remove nvidia_setting_conf /usr/lib/nvidia-settings-313-updates/ld.so.conf
 
 		# Trigger gmenu so as to update the gnome menu
 		dpkg-trigger --by-package=$PACKAGE_NAME gmenucache || true
