@@ -1,8 +1,11 @@
-nvidia-settings-313-updates (313.30-0ubuntu1) UNRELEASED; urgency=low
+nvidia-settings-313-updates (313.30-0ubuntu1) raring; urgency=low
 
-  * 
+  * New upstream release:
+    - Match the ABI in the 313.30 release.
+  * debian/rules:
+    - Make sure that the sources are installed correctly.
 
- -- Alberto Milone <alberto.milone@canonical.com>  Wed, 10 Apr 2013 16:43:51 +0200
+ -- Alberto Milone <alberto.milone@canonical.com>  Wed, 10 Apr 2013 16:50:34 +0200
 
 nvidia-settings-313-updates (313.18-0ubuntu1) raring; urgency=low
 
