@@ -3,17 +3,17 @@
 # Authors: Alberto Milone
 set -e
 
-PACKAGE_NAME=nvidia-settings-313-updates
+PACKAGE_NAME=nvidia-settings-319
 
 case "$1" in
     configure)
         # Deal with alternatives
         update-alternatives --force \
-            --install /etc/ld.so.conf.d/nvidia_settings.conf nvidia_settings_conf /usr/lib/nvidia-settings-313-updates/ld.so.conf 9701 \
-            --slave /usr/share/man/man1/nvidia-settings.1.gz man_nvidiasettings.gz /usr/lib/nvidia-settings-313-updates/share/man/man1/alt-nvidia-settings-313-updates.1.gz \
-            --slave /usr/bin/nvidia-settings nvidia_settings /usr/lib/nvidia-settings-313-updates/bin/nvidia-settings \
-            --slave /usr/include/NVCtrl nvctrl_include /usr/lib/nvidia-settings-313-updates/include/NVCtrl \
-            --slave /usr/lib/libXNVCtrl.a libxnvctrl.a /usr/lib/nvidia-settings-313-updates/libXNVCtrl.a
+            --install /etc/ld.so.conf.d/nvidia_settings.conf nvidia_settings_conf /usr/lib/nvidia-settings-319/ld.so.conf 9701 \
+            --slave /usr/share/man/man1/nvidia-settings.1.gz man_nvidiasettings.gz /usr/lib/nvidia-settings-319/share/man/man1/alt-nvidia-settings-319.1.gz \
+            --slave /usr/bin/nvidia-settings nvidia_settings /usr/lib/nvidia-settings-319/bin/nvidia-settings \
+            --slave /usr/include/NVCtrl nvctrl_include /usr/lib/nvidia-settings-319/include/NVCtrl \
+            --slave /usr/lib/libXNVCtrl.a libxnvctrl.a /usr/lib/nvidia-settings-319/libXNVCtrl.a
 
         # ldconfig needs to be run immediately as we're changing /etc/ld.so.conf.d/ with
         # alternatives.
