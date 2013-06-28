@@ -1,8 +1,16 @@
-nvidia-settings-319 (319.32-0ubuntu1) UNRELEASED; urgency=low
+nvidia-settings-319 (319.32-0ubuntu1) saucy; urgency=low
 
-  * 
+  * New upstream release:
+    - Updated the nvidia-settings control panel to report
+      more detailed locking information.
+    - Fixed a bug that could cause nvidia-settings to
+      crash when switching VTs after changing some
+      settings.
+    - Added a "Prefer Consistent Performance" PowerMizer
+      Mode to the nvidia-settings control panel,
+      available on Quadro boards that support this feature.
 
- -- Alberto Milone <alberto.milone@canonical.com>  Fri, 28 Jun 2013 13:46:22 +0200
+ -- Alberto Milone <alberto.milone@canonical.com>  Fri, 28 Jun 2013 15:53:23 +0200
 
 nvidia-settings-319 (319.23-0ubuntu1) saucy; urgency=low
 
