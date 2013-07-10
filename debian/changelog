@@ -1,8 +1,11 @@
-nvidia-settings-319-updates (319.32-0ubuntu2) UNRELEASED; urgency=low
+nvidia-settings-319-updates (319.32-0ubuntu2) saucy; urgency=low
 
-  * 
+  * debian/control.in:
+    - Conflict/replace/provide nvidia-settings-binary.
+    - Add transitional packages for nvidia-settings-310-updates
+      and nvidia-settings-313-updates.
 
- -- Alberto Milone <alberto.milone@canonical.com>  Wed, 10 Jul 2013 13:22:46 +0200
+ -- Alberto Milone <alberto.milone@canonical.com>  Wed, 10 Jul 2013 13:30:54 +0200
 
 nvidia-settings-319-updates (319.32-0ubuntu1) saucy; urgency=low
 
