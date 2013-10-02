@@ -1,8 +1,8 @@
-nvidia-settings-319-updates (319.60-0ubuntu1) UNRELEASED; urgency=low
+nvidia-settings-319-updates (319.60-0ubuntu1) saucy; urgency=low
 
-  * 
+  * New upstream release.
 
- -- Alberto Milone <alberto.milone@canonical.com>  Wed, 02 Oct 2013 12:36:47 +0200
+ -- Alberto Milone <alberto.milone@canonical.com>  Wed, 02 Oct 2013 12:38:20 +0200
 
 nvidia-settings-319-updates (319.49-0ubuntu2) saucy; urgency=low
 
