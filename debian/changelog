@@ -1,3 +1,10 @@
+nvidia-settings (430.26-0ubuntu2) UNRELEASED; urgency=medium
+
+  * debian/patches/08_add_prime_support.patch:
+    - Add on-demand mode. (LP: #1824282)
+
+ -- Yuan-Chen Cheng <yc.cheng@canonical.com>  Mon, 08 Jul 2019 14:53:13 +0800
+
 nvidia-settings (430.26-0ubuntu1) eoan; urgency=medium
 
   * New upstream release.
