@@ -1,3 +1,13 @@
+nvidia-settings (418.56-0ubuntu2) eoan; urgency=medium
+
+  * debian/patches/05_add_polkit_support.patch:
+    - Use pkexec and call the new binary provided by
+      screen-resolution-extra (LP: #1822937).
+  * debian/control:
+    - Depend on screen-resolution-extra (>= 0.18~).
+
+ -- Alberto Milone <alberto.milone@canonical.com>  Tue, 21 May 2019 15:20:46 +0200
+
 nvidia-settings (418.56-0ubuntu1) disco; urgency=medium
 
   * New upstream release:
