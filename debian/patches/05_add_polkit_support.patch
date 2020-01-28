@@ -1,6 +1,6 @@
 --- a/src/gtk+-2.x/ctkdisplayconfig-utils.c
 +++ b/src/gtk+-2.x/ctkdisplayconfig-utils.c
-@@ -4219,6 +4219,79 @@ static void update_banner(XConfigPtr con
+@@ -4185,6 +4185,77 @@
  
  } /* update_banner() */
  
@@ -25,7 +25,7 @@
 +    gchar *command;
 +    gboolean polkit_status;
 +    int status;
-+    char *nvidia_polkit = "/usr/share/screen-resolution-extra/nvidia-polkit";
++    char *nvidia_polkit = "/usr/share/screen-resolution-extra/nvidia-polkit.py";
 +
 +    if (!buf || !filename) goto done;
 +
@@ -40,10 +40,8 @@
 +    /* Backup the the X config file (if any) and write out the X config
 +     * file from the temporary file
 +     */
-+    command = g_strconcat("/usr/bin/pkexec ",
++    command = g_strconcat("python3 ",
 +                          nvidia_polkit,
-+                          " ",
-+                          filename,
 +                          " --write-from=",
 +                          temp_filename,
 +                          " --backup-to=",
@@ -80,7 +78,7 @@
  
  
  /** save_xconfig_file() **********************************************
-@@ -4239,6 +4312,9 @@ static int save_xconfig_file(SaveXConfDl
+@@ -4205,6 +4276,9 @@
  
      int ret = 0;
  
