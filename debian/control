@@ -5,7 +5,7 @@ XSBC-Original-Maintainer: Debian NVIDIA Maintainers <pkg-nvidia-devel@lists.alio
 Maintainer: Ubuntu MOTU Developers <ubuntu-motu@lists.ubuntu.com>
 Uploaders: Randall Donald <rdonald@debian.org>
 Build-Depends: debhelper (>= 9), dh-exec (>= 0.3), m4, libgtk2.0-dev, libgtk-3-dev, libxext-dev, xutils-dev, libxrandr-dev,
- libgl1-mesa-dev | libgl-dev, libxxf86vm-dev, libxv-dev, libvdpau-dev, libjansson-dev (>= 2.2)
+ libgl1-mesa-dev | libgl-dev, libegl1-mesa-dev | libegl-dev, libxxf86vm-dev, libxv-dev, libvdpau-dev, libjansson-dev (>= 2.2), libdbus-1-dev
 Build-Conflicts: libxnvctrl-dev
 Standards-Version: 3.8.0
 Vcs-Git: git://github.com/tseliot/nvidia-settings.git
@@ -14,7 +14,7 @@ Vcs-Browser: http://github.com/tseliot/nvidia-settings
 Package: nvidia-settings
 Section: contrib/x11
 Architecture: i386 amd64 armhf arm64 ppc64el
-Depends: pkg-config, screen-resolution-extra (>= 0.12),
+Depends: pkg-config, screen-resolution-extra (>= 0.18~),
  libvdpau1, ${shlibs:Depends}, ${misc:Depends}
 Conflicts: nvidia-settings-binary
 Replaces: nvidia-settings-binary

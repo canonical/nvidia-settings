@@ -1,6 +1,6 @@
 --- a/src/gtk+-2.x/ctkdisplayconfig-utils.c
 +++ b/src/gtk+-2.x/ctkdisplayconfig-utils.c
-@@ -4185,6 +4185,77 @@
+@@ -4219,6 +4219,79 @@ static void update_banner(XConfigPtr con
  
  } /* update_banner() */
  
@@ -25,7 +25,7 @@
 +    gchar *command;
 +    gboolean polkit_status;
 +    int status;
-+    char *nvidia_polkit = "/usr/share/screen-resolution-extra/nvidia-polkit.py";
++    char *nvidia_polkit = "/usr/share/screen-resolution-extra/nvidia-polkit";
 +
 +    if (!buf || !filename) goto done;
 +
@@ -40,8 +40,10 @@
 +    /* Backup the the X config file (if any) and write out the X config
 +     * file from the temporary file
 +     */
-+    command = g_strconcat("python3 ",
++    command = g_strconcat("/usr/bin/pkexec ",
 +                          nvidia_polkit,
++                          " ",
++                          filename,
 +                          " --write-from=",
 +                          temp_filename,
 +                          " --backup-to=",
@@ -49,11 +51,11 @@
 +                          NULL);
 +    polkit_status = (g_spawn_command_line_sync(command, NULL, NULL, &status, NULL) && status == 0);
 +    g_free(command);
-+    
++
 +    /* Remove the temporary file */
 +    unlink(temp_filename);
 +    g_free(temp_filename);
-+    
++
 +    if (!polkit_status) {
 +        err_msg = g_strdup_printf("Unable to open X config file '%s' for writing.",
 +                                  filename);
@@ -61,7 +63,7 @@
 +    }
 +
 +    ret = 1;
-+    
++
 + done:
 +    /* Display any errors that might have occured */
 +    if (err_msg) {
@@ -72,18 +74,18 @@
 +
 +    g_free(backup_filename);
 +    return ret;
-+    
++
 +} /* save_xconfig_file() */
 +
  
  
  /** save_xconfig_file() **********************************************
-@@ -4205,6 +4276,9 @@
+@@ -4239,6 +4312,9 @@ static int save_xconfig_file(SaveXConfDl
  
      int ret = 0;
  
 +    ret = ubuntu_save_xconfig_file(dlg, filename, buf, mode);
-+    
++
 +    return ret;
  
      if (!buf || !filename) goto done;
