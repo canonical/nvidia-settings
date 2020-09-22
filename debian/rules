@@ -8,6 +8,10 @@ DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 
 export NV_USE_BUNDLED_LIBJANSSON = 0
 
+ifeq ($(shell dpkg-vendor --is Ubuntu && echo yes) $(DEB_HOST_ARCH), yes i386)
+   skip_packages = -Nbluez-cups
+endif
+
 build: build-arch
 build-arch:
 	$(MAKE) -C src/libXNVCtrl EXTINCSRC=/usr/include/X11/extensions \
@@ -58,6 +62,12 @@ override_dh_auto_install:
 
 override_dh_usrlocal:
 	rm -Rf $(CURDIR)/debian/$(PKG_name)/usr/local
+
+override_dh_builddeb:
+	dh_builddeb $(skip_packages)
+
+override_dh_gencontrol:
+	dh_gencontrol $(skip_packages)
 
 %:
 	dh $@
