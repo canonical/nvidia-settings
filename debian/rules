@@ -9,7 +9,7 @@ DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
 export NV_USE_BUNDLED_LIBJANSSON = 0
 
 ifeq ($(shell dpkg-vendor --is Ubuntu && echo yes) $(DEB_HOST_ARCH), yes i386)
-   skip_packages = -Nbluez-cups
+   skip_packages = -Nnvidia-settings
 endif
 
 build: build-arch
