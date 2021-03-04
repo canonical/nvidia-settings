@@ -1,8 +1,11 @@
-nvidia-settings (460.39-0ubuntu0.18.04.2) UNRELEASED; urgency=medium
+nvidia-settings (460.39-0ubuntu0.18.04.2) bionic; urgency=medium
 
-  * 
+  * debian/patches/13_libxnvctrl_so_0.patch:
+    - Put -fPIC back in for XNVCTRL_CFLAGS.
+      This is only needed in bionic, and was accidentally
+      dropped.
 
- -- Alberto Milone <alberto.milone@canonical.com>  Thu, 04 Mar 2021 12:54:12 +0100
+ -- Alberto Milone <alberto.milone@canonical.com>  Thu, 04 Mar 2021 13:00:10 +0100
 
 nvidia-settings (460.39-0ubuntu0.18.04.1) bionic; urgency=medium
 
