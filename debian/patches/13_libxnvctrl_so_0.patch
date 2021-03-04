@@ -58,8 +58,12 @@ Bug-Debian: https://bugs.debian.org/666909
 +	rm -f $(LIBXNVCTRL_SHARED) $(LIBXNVCTRL_SHARED).*
 --- a/src/libXNVCtrl/xnvctrl.mk
 +++ b/src/libXNVCtrl/xnvctrl.mk
-@@ -37,7 +37,8 @@ endif
- XNVCTRL_CFLAGS ?=
+@@ -34,10 +34,11 @@ ifndef XNVCTRL_LDFLAGS
+   endif
+ endif
+ 
+-XNVCTRL_CFLAGS ?=
++XNVCTRL_CFLAGS += -fPIC
  
  
 -LIBXNVCTRL = $(OUTPUTDIR)/libXNVCtrl.a
