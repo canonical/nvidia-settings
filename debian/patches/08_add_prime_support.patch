@@ -15,7 +15,7 @@ Refreshed for the 410 series
 
 --- /dev/null
 +++ b/src/gtk+-2.x/ctkprime.c
-@@ -0,0 +1,639 @@
+@@ -0,0 +1,644 @@
 +/*
 + * nvidia-settings: A tool for configuring the NVIDIA X driver on Unix
 + * and Linux systems.
@@ -366,6 +366,10 @@ Refreshed for the 410 series
 +
 +    success = g_spawn_check_exit_status (exit_status, &error);
 +
++    /* Remove the source of the timeout */
++    g_source_remove(ctk_prime->source_id);
++    ctk_prime->source_id = 0;
++
 +    /* Get the parent widget */
 +    parent = ctk_get_parent_window(GTK_WIDGET(ctk_prime));
 +
@@ -415,7 +419,7 @@ Refreshed for the 410 series
 +static gboolean
 +bounce_bar (gpointer user_data)
 +{
-+    if (!user_data || !GTK_IS_PROGRESS_BAR(user_data))
++    if (!user_data)
 +        return FALSE;
 +
 +    GtkWidget *progress_bar = user_data;
@@ -440,6 +444,7 @@ Refreshed for the 410 series
 +
 +    CtkPrime *ctk_prime = CTK_PRIME(user_data);
 +    g_autoptr(GError) error = NULL;
++    ctk_prime->source_id = 0;
 +
 +    /* Get the toggle button state */
 +    enabled = gtk_toggle_button_get_active(GTK_TOGGLE_BUTTON(widget));
@@ -471,7 +476,7 @@ Refreshed for the 410 series
 +        gtk_container_add (GTK_CONTAINER (content_area), progress_bar);
 +
 +        /* keep the bar bouncing */
-+        g_timeout_add (500, bounce_bar, GTK_PROGRESS_BAR (progress_bar));
++        ctk_prime->source_id = g_timeout_add (500, bounce_bar, GTK_PROGRESS_BAR (progress_bar));
 +
 +        gchar * argv[] = {"/usr/bin/pkexec", "/usr/bin/prime-select", ctk_prime->value, NULL };
 +
@@ -657,7 +662,7 @@ Refreshed for the 410 series
 +
 --- /dev/null
 +++ b/src/gtk+-2.x/ctkprime.h
-@@ -0,0 +1,81 @@
+@@ -0,0 +1,82 @@
 +/*
 + * nvidia-settings: A tool for configuring the NVIDIA X driver on Unix
 + * and Linux systems.
@@ -723,6 +728,7 @@ Refreshed for the 410 series
 +    int current_button;
 +    int has_on_demand_mode;
 +    gchar *value;
++    guint source_id;
 +};
 +
 +struct _CtkPrimeClass
