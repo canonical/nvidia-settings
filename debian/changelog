@@ -1,8 +1,12 @@
-nvidia-settings (460.39-0ubuntu2) UNRELEASED; urgency=medium
+nvidia-settings (460.39-0ubuntu2) hirsute; urgency=medium
 
-  * 
+  * debian/patches/08_add_prime_support.patch:
+    - Stop the timeout after the child is done.
+      Fixes e00eb1b3fbe5d04901fe25f2a0e7332659a82064
+      and 6a6445e659806d915dd486417ae2e8c3cc89b1ff
+      from https://errors.ubuntu.com.
 
- -- Alberto Milone <alberto.milone@canonical.com>  Wed, 17 Mar 2021 16:03:21 +0100
+ -- Alberto Milone <alberto.milone@canonical.com>  Thu, 18 Mar 2021 11:50:23 +0100
 
 nvidia-settings (460.39-0ubuntu1) hirsute; urgency=medium
 
