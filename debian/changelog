@@ -1,8 +1,8 @@
-nvidia-settings (460.56-0ubuntu1) UNRELEASED; urgency=medium
+nvidia-settings (460.56-0ubuntu1) hirsute; urgency=medium
 
-  * 
+  * New upstream release.
 
- -- Alberto Milone <alberto.milone@canonical.com>  Thu, 18 Mar 2021 17:08:15 +0100
+ -- Alberto Milone <alberto.milone@canonical.com>  Thu, 18 Mar 2021 18:24:29 +0100
 
 nvidia-settings (460.39-0ubuntu2) hirsute; urgency=medium
 
