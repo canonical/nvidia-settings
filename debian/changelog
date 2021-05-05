@@ -1,8 +1,11 @@
-nvidia-settings (460.73.01-0ubuntu0.20.04.1) UNRELEASED; urgency=medium
+nvidia-settings (460.73.01-0ubuntu0.20.04.1) focal; urgency=medium
 
-  * 
+  * New upstream release (LP: #1925522).
+  * debian/patches/08_add_prime_support.patch:
+    - Stop the timeout after the child is done. This fixes an error
+      that g_type_check_instance_is_a() was throwing.
 
- -- Alberto Milone <alberto.milone@canonical.com>  Wed, 05 May 2021 15:39:05 +0200
+ -- Alberto Milone <alberto.milone@canonical.com>  Wed, 05 May 2021 15:41:06 +0200
 
 nvidia-settings (460.39-0ubuntu0.20.04.1) focal; urgency=medium
 
