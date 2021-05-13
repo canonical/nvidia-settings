@@ -1,6 +1,7 @@
-nvidia-settings (460.56-0ubuntu2) UNRELEASED; urgency=medium
+nvidia-settings (460.56-0ubuntu2) hirsute; urgency=medium
 
-  * 
+  * debian/patches/include-Xlib.patch: (LP: #1922583)
+    - NVCtrlLib.h uses macros from X11/Xlib.h. Include it.
 
  -- Thomas Ward <teward@ubuntu.com>  Mon, 05 Apr 2021 15:40:14 -0400
 
