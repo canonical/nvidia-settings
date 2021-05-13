@@ -1,0 +1,15 @@
+Author: Andreas Beckmann <anbe@debian.org>
+Description: NVCtrlLib.h uses macros from X11/Xlib.h
+Bug-Debian: https://bugs.debian.org/978192
+
+--- a/src/libXNVCtrl/NVCtrlLib.h
++++ b/src/libXNVCtrl/NVCtrlLib.h
+@@ -26,6 +26,8 @@
+ 
+ #include "NVCtrl.h"
+ 
++#include <X11/Xlib.h>
++
+ #if defined __cplusplus
+ extern "C" {
+ #endif 
