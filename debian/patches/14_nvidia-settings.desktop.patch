@@ -18,5 +18,5 @@ Description: substitute placeholders in desktop file
 -Icon=__PIXMAP_PATH__/nvidia-settings.png
 -Categories=__NVIDIA_SETTINGS_DESKTOP_CATEGORIES__
  
- # Translations provided by Sun Microsystems
- Name[de]=NVIDIA X-Server-Einstellungen
+ # Translation by Marcin Mikołajczak
+ Name[pl]=Ustawienia serwera X NVIDIA
