@@ -1,8 +1,13 @@
-nvidia-settings (465.31-0ubuntu0.21.04.1) UNRELEASED; urgency=medium
+nvidia-settings (465.31-0ubuntu0.21.04.1) hirsute; urgency=medium
 
-  * 
+  * New upstream release (LP: #1931131).
+  * debian/patches/12_nostrip.patch,
+    debian/patches/14_nvidia-settings.desktop.patch:
+    - Refresh the patches.
+  * debian/compat, debian/control:
+    - Depend on debhelper 10 and update standards.
 
- -- Alberto Milone <alberto.milone@canonical.com>  Mon, 14 Jun 2021 13:43:42 +0200
+ -- Alberto Milone <alberto.milone@canonical.com>  Mon, 14 Jun 2021 13:44:54 +0200
 
 nvidia-settings (460.73.01-0ubuntu0.21.04.1) hirsute; urgency=medium
 
