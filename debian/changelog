@@ -1,8 +1,13 @@
-nvidia-settings (465.31-0ubuntu1) UNRELEASED; urgency=medium
+nvidia-settings (465.31-0ubuntu1) impish; urgency=medium
 
-  * 
+  * New upstream release.
+  * debian/patches/12_nostrip.patch,
+    debian/patches/14_nvidia-settings.desktop.patch:
+    - Refresh the patches.
+  * debian/compat, debian/control:
+    - Depend on debhelper 10 and update standards.
 
- -- Alberto Milone <alberto.milone@canonical.com>  Mon, 14 Jun 2021 12:37:14 +0200
+ -- Alberto Milone <alberto.milone@canonical.com>  Mon, 14 Jun 2021 13:08:56 +0200
 
 nvidia-settings (460.73.01-0ubuntu2) impish; urgency=medium
 
