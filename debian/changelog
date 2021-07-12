@@ -1,8 +1,8 @@
-nvidia-settings (470.57.01-0ubuntu0.21.04.1) UNRELEASED; urgency=medium
+nvidia-settings (470.57.01-0ubuntu0.21.04.1) hirsute; urgency=medium
 
-  * 
+  * New upstream release (LP: #1933980).
 
- -- Alberto Milone <alberto.milone@canonical.com>  Mon, 12 Jul 2021 16:14:44 +0200
+ -- Alberto Milone <alberto.milone@canonical.com>  Mon, 12 Jul 2021 16:22:06 +0200
 
 nvidia-settings (465.31-0ubuntu0.21.04.1) hirsute; urgency=medium
 
