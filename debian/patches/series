@@ -10,3 +10,4 @@ link-order.diff
 14_nvidia-settings.desktop.patch
 15_clean.patch
 17_do_not_read_config_on_power_saving_mode.patch
+18_remove_power-saving_if_on-demand.patch

@@ -1,0 +1,30 @@
+From: Jeremy Szu <jeremy.szu@canonical.com>
+Date: Fri, 20 Aug 2021 00:21:48 +0800
+Subject: 17-remove_power-saving_if_on-demand
+
+---
+ src/gtk+-2.x/ctkprime.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/gtk+-2.x/ctkprime.c b/src/gtk+-2.x/ctkprime.c
+index 3bd5043..f87e7b2 100644
+--- a/src/gtk+-2.x/ctkprime.c
++++ b/src/gtk+-2.x/ctkprime.c
+@@ -311,7 +311,7 @@ prime_update_radio_buttons(CtkPrime *ctk_prime, gint value)
+  *   if ctk_prime->has_on_demand_mode == 1:
+  *     nvidia: 0
+  *     on-demand: 1
+- *     intel: 2
++ *     intel: 2 # presents but disabled for if user issues "prime-select intel"
+  *   else:
+  *     nvidia: 0
+  *     intel: 1
+@@ -579,6 +579,8 @@ GtkWidget* ctk_prime_new(CtkConfig *ctk_config)
+                                "Enabling this option ensures the best "
+                                "battery life. This option is "
+                                "applied after a system restart.");
++
++	gtk_widget_set_sensitive(radio[2], FALSE);
+     } else {
+         /* Button for Intel */
+         radio[1] = prime_radio_button_add(ctk_prime,
