@@ -1,0 +1,13 @@
+Index: nvidia-settings-470.57.01/src/nvidia-settings.c
+===================================================================
+--- nvidia-settings-470.57.01.orig/src/nvidia-settings.c	2021-09-10 00:40:09.000000000 +0800
++++ nvidia-settings-470.57.01/src/nvidia-settings.c	2021-09-10 00:42:27.903240138 +0800
+@@ -336,7 +336,7 @@
+ 
+     /* upload the data from the config file */
+     
+-    if (!op->no_load) {
++    if (!op->no_load && systems.n != 0) {
+         ret = nv_read_config_file(op, op->config, op->ctrl_display,
+                                   p, &conf, &systems);
+     } else {
