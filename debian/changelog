@@ -1,3 +1,10 @@
+nvidia-settings (470.57.01-0ubuntu3) impish; urgency=medium
+
+  * control: Enable build of nvidia-settings package on riscv64.
+    (LP: #1943030)
+
+ -- Alexandre Ghiti <alexandre.ghiti@canonical.com>  Thu, 16 Sep 2021 11:11:52 -0700
+
 nvidia-settings (470.57.01-0ubuntu2) impish; urgency=medium
 
   * debian/patches/17_do_not_read_config_on_power_saving_mode.patch:
