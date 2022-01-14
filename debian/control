@@ -13,7 +13,7 @@ Vcs-Browser: http://github.com/tseliot/nvidia-settings
 
 Package: nvidia-settings
 Section: contrib/x11
-Architecture: i386 amd64 armhf arm64 ppc64el
+Architecture: i386 amd64 armhf arm64 ppc64el riscv64
 Depends: pkg-config, screen-resolution-extra (>= 0.18~),
  libvdpau1, ${shlibs:Depends}, ${misc:Depends}
 Conflicts: nvidia-settings-binary
