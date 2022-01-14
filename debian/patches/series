@@ -12,3 +12,4 @@ link-order.diff
 include-Xlib.patch
 17_do_not_read_config_on_power_saving_mode.patch
 18_remove_power-saving_if_on-demand.patch
+19_lp1957094-adjust-on-demand-mode-description.patch
