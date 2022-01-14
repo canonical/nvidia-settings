@@ -1,0 +1,26 @@
+From: Jeremy Szu <jeremy.szu@canonical.com>
+Date: Fri, 14 Jan 2022 07:40:18 +0000
+Subject: lp1957094-adjust-on-demand-mode-description
+
+1. On-demand mode will fall back to ON if nvidia-driver < 450
+---
+ src/gtk+-2.x/ctkprime.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/gtk+-2.x/ctkprime.c b/src/gtk+-2.x/ctkprime.c
+index 3bd5043..d857a79 100644
+--- a/src/gtk+-2.x/ctkprime.c
++++ b/src/gtk+-2.x/ctkprime.c
+@@ -565,8 +565,10 @@ GtkWidget* ctk_prime_new(CtkConfig *ctk_config)
+         /* Set the tooltip for ON-Demand */
+         ctk_config_set_tooltip(ctk_config, radio[1],
+                                "Enabling this option allows using the Nvidia GPU"
+-                               " in on-demand mode. This option is "
+-                               "applied after a system restart.");
++                               " in on-demand mode (only if nvidia version >= 450; "
++                               "otherwise, the behavior will approach to "
++                               "performance mode). This option is applied after "
++                               "a system restart.");
+
+         /* Button for Intel */
+         radio[2] = prime_radio_button_add(ctk_prime,
