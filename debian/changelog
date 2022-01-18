@@ -1,3 +1,17 @@
+nvidia-settings (470.57.01-0ubuntu3.1~0.21.10.1) impish; urgency=medium
+
+  [ Jeremy Szu ]
+  * debian/patches/18_remove_power-saving_if_on-demand.patch,
+    debian/patches/19_lp1957094-adjust-on-demand-mode-description.patch:
+     - Disable the item of power saving mode if on-demand is supported
+       (LP: #1957094).
+     - Leave the item there because the user might issue 'prime-select
+       intel' manually. Thus, leave it there could prevent selection
+       confuse.
+     - Explain the on-demand mode if driver < 450.
+
+ -- Alberto Milone <alberto.milone@canonical.com>  Tue, 18 Jan 2022 14:25:40 +0000
+
 nvidia-settings (470.57.01-0ubuntu3) impish; urgency=medium
 
   * control: Enable build of nvidia-settings package on riscv64.
