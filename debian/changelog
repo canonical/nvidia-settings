@@ -1,3 +1,9 @@
+nvidia-settings (470.57.01-0ubuntu0.20.04.3) UNRELEASED; urgency=medium
+
+  * 
+
+ -- Alberto Milone <alberto.milone@canonical.com>  Tue, 18 Jan 2022 15:41:05 +0000
+
 nvidia-settings (470.57.01-0ubuntu0.20.04.2) focal; urgency=medium
 
   * debian/patches/17_do_not_read_config_on_power_saving_mode.patch:
