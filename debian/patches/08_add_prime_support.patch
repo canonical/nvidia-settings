@@ -755,62 +755,220 @@ Refreshed for the 410 series
  #include "ctkopengl.h"
  #include "ctkglx.h"
  #include "ctkmultisample.h"
-@@ -704,7 +705,8 @@ GtkWidget *ctk_window_new(ParsedAttribut
-     driver_major = driver_minor = 0;
- 
-     /* X Server info & configuration */
--
-+    /* Skip if nvidia is not loaded */
-+    if (system) {
-     if (system->targets[X_SCREEN_TARGET]) {
- 
-         GtkWidget *child;
-@@ -1011,13 +1013,6 @@ GtkWidget *ctk_window_new(ParsedAttribut
-                  ctk_3d_vision_pro_select, ctk_3d_vision_pro_unselect);
+@@ -165,7 +166,7 @@ GType ctk_window_get_type(void)
      }
  
--
--    /* We show this section in two cases:
--     * 1) when the driver is not in use (hybrid graphics)
--     * 2) when the driver release >= 319
--     */
--    if (driver_major == 0 || driver_major >= 319) {
--
-     /* app profile configuration */
-     widget = ctk_app_profile_new(server_target, ctk_config);
-     if (widget) {
-@@ -1039,8 +1034,6 @@ GtkWidget *ctk_window_new(ParsedAttribut
+     return ctk_window_type;
+-    
++
+ } /* ctk_window_get_type() */
+ 
+ 
+@@ -429,12 +430,12 @@ static void tree_selection_changed(GtkTr
+ 
+     ctk_window->iter = iter;
+     ctk_window->widget = widget;
+-    
++
+ } /* tree_selection_changed() */
+ 
+ 
+ 
+-/* 
++/*
+  * row_activated_event() - callback for row-activated event
+  * - handles key presses automatically
+  * - allows the mouse to collapse/expand the menu even when the
+@@ -447,7 +448,7 @@ static void row_activated_event(GtkTreeV
+                                 gpointer            user_data)
+ {
+     CtkWindow *ctk_window = CTK_WINDOW(user_data);
+-    
++
+     if (gtk_tree_view_row_expanded(ctk_window->treeview, path)) {
+         gtk_tree_view_collapse_row(ctk_window->treeview, path);
+     } else {
+@@ -517,12 +518,12 @@ GtkWidget *ctk_window_new(ParsedAttribut
+     gtk_container_set_border_width(GTK_CONTAINER(ctk_window), CTK_WINDOW_PAD);
+ 
+     ctk_window->attribute_list = p;
+-    
++
+     /* create the config object */
+ 
+     ctk_window->ctk_config = CTK_CONFIG(ctk_config_new(conf, system));
+     ctk_config = ctk_window->ctk_config;
+-    
++
+     /* create the quit dialog */
+ 
+     ctk_window->quit_dialog = create_quit_dialog(ctk_window);
+@@ -534,21 +535,21 @@ GtkWidget *ctk_window_new(ParsedAttribut
+     vbox = gtk_vbox_new(FALSE, 5);
+     gtk_container_add(GTK_CONTAINER(ctk_window), vbox);
+     gtk_box_pack_end(GTK_BOX(vbox), hbox, FALSE, FALSE, 0);
+-    
++
+     /* place the status bar */
+-    
++
+     statusbar = ctk_config_get_statusbar(ctk_config);
+     eventbox = gtk_event_box_new();
+     gtk_container_add(GTK_CONTAINER(eventbox), statusbar);
+-    
++
+     gtk_box_pack_start(GTK_BOX(hbox), eventbox, TRUE, TRUE, 0);
+-    
++
+     ctk_config_set_tooltip(ctk_config, eventbox, "The status bar displays "
+                            "the most recent change that has been sent to the "
+                            "X server.");
+-    
++
+     /* create and place the help toggle button */
+-  
++
+     toggle_button = gtk_toggle_button_new();
+ 
+     g_object_set(G_OBJECT(toggle_button),
+@@ -566,7 +567,7 @@ GtkWidget *ctk_window_new(ParsedAttribut
+     ctk_window->ctk_help = NULL;
+     tag_table = ctk_help_create_tag_table();
+     ctk_window->help_tag_table = tag_table;
+-    
++
+     ctk_config_set_tooltip(ctk_config, toggle_button, "The Help button "
+                            "toggles the display of a help window which "
+                            "provides a detailed explanation of the available "
+@@ -580,14 +581,14 @@ GtkWidget *ctk_window_new(ParsedAttribut
+     g_signal_connect(G_OBJECT(button), "clicked",
+                      G_CALLBACK(close_button_clicked),
+                      (gpointer) ctk_window);
+-    
++
+     gtk_box_pack_start(GTK_BOX(hbox), button, FALSE, FALSE, 0);
+-    
++
+     ctk_config_set_tooltip(ctk_config, button, "The Quit button causes the "
+                            "current settings to be saved to the configuration "
+                            "file (~/.nvidia-settings-rc), and nvidia-settings "
+                            "to exit.");
+-    
++
+     /* create the horizontal pane */
+ 
+     hpane = gtk_hpaned_new();
+@@ -598,11 +599,11 @@ GtkWidget *ctk_window_new(ParsedAttribut
+     gtk_paned_pack1(GTK_PANED(hpane), frame, FALSE, FALSE);
+ 
+     /* scrollable window */
+-    
++
+     sw = gtk_scrolled_window_new(NULL, NULL);
+     gtk_scrolled_window_set_policy(GTK_SCROLLED_WINDOW(sw),
+                                    GTK_POLICY_NEVER, GTK_POLICY_AUTOMATIC);
+-    
++
+     gtk_container_add(GTK_CONTAINER(frame), sw);
+ 
+     /* create the tree model */
+@@ -857,7 +858,7 @@ GtkWidget *ctk_window_new(ParsedAttribut
+         gtk_tree_store_set(ctk_window->tree_store, &iter,
+                            CTK_WINDOW_WIDGET_COLUMN, child, -1);
+         gtk_tree_store_set(ctk_window->tree_store, &iter,
+-                           CTK_WINDOW_HELP_COLUMN, 
++                           CTK_WINDOW_HELP_COLUMN,
+                            ctk_gpu_create_help(tag_table, CTK_GPU(child)), -1);
+         gtk_tree_store_set(ctk_window->tree_store, &iter,
+                            CTK_WINDOW_CONFIG_FILE_ATTRIBUTES_FUNC_COLUMN,
+@@ -883,7 +884,7 @@ GtkWidget *ctk_window_new(ParsedAttribut
+         if (child) {
+             help = ctk_powermizer_create_help(tag_table, CTK_POWERMIZER(child));
+             add_page(child, help, ctk_window, &iter, NULL, "PowerMizer",
+-                     NULL, ctk_powermizer_start_timer, 
++                     NULL, ctk_powermizer_start_timer,
+                      ctk_powermizer_stop_timer);
          }
-     }
  
--    }
--
-     /* nvidia-settings configuration */
- 
-     add_page(GTK_WIDGET(ctk_window->ctk_config),
-@@ -1048,6 +1041,22 @@ GtkWidget *ctk_window_new(ParsedAttribut
+@@ -995,6 +996,14 @@ GtkWidget *ctk_window_new(ParsedAttribut
               ctk_window, NULL, NULL, "nvidia-settings Configuration",
               NULL, NULL, NULL);
  
-+    }/* End skipping when nvidia is not loaded */
-+
-+    /* We show this section in two cases:
-+     * 1) when the driver is not in use (hybrid graphics)
-+     * 2) when the driver release >= 319
-+     */
-+    if (driver_major == 0 || driver_major >= 319) {
-+        /* PRIME settings  */
-+        widget = ctk_prime_new(ctk_config);
-+        if (widget) {
-+            help = ctk_prime_create_help(tag_table, CTK_PRIME(widget));
-+            add_page(widget, help, ctk_window, NULL, NULL, "PRIME Profiles",
-+                     NULL, NULL, NULL);
-+        }
-+    }
++	/* PRIME settings  */
++	widget = ctk_prime_new(ctk_config);
++	if (widget) {
++		help = ctk_prime_create_help(tag_table, CTK_PRIME(widget));
++		add_page(widget, help, ctk_window, NULL, NULL, "PRIME Profiles",
++				 NULL, NULL, NULL);
++	}
 +
      /*
       * we're done with the current data in the parsed attribute list,
       * so clean it out
+@@ -1022,9 +1031,9 @@ GtkWidget *ctk_window_new(ParsedAttribut
+ 
+ 
+     /* set the window title */
+-    
++
+     gtk_window_set_title(GTK_WINDOW(object), "NVIDIA Settings");
+-    
++
+     gtk_widget_show_all(GTK_WIDGET(object));
+ 
+ 
+@@ -1057,7 +1066,7 @@ GtkWidget *ctk_window_new(ParsedAttribut
+ 
+     g_signal_connect(G_OBJECT(ctk_window), "delete-event",
+                      G_CALLBACK(ctk_window_delete_event), (gpointer) ctk_window);
+-    
++
+     return GTK_WIDGET(object);
+ 
+ } /* ctk_window_new() */
+@@ -1154,7 +1163,7 @@ static void add_page(GtkWidget *widget,
+                      GtkTreeIter *child_iter,
+                      const gchar *label, config_file_attributes_func_t func,
+                      select_widget_func_t select_func,
+-                     unselect_widget_func_t unselect_func)                     
++                     unselect_widget_func_t unselect_func)
+ {
+     GtkTreeIter tmp_child_iter;
+ 
+@@ -1226,20 +1235,20 @@ static GtkWidget *create_quit_dialog(Ctk
+ 
+     gtk_container_set_border_width(GTK_CONTAINER(dialog), 6);
+     gtk_window_set_resizable(GTK_WINDOW(dialog), FALSE);
+-    
++
+     hbox = gtk_hbox_new(FALSE, 5);
+     gtk_container_set_border_width(GTK_CONTAINER(hbox), 6);
+     gtk_container_add(GTK_CONTAINER(ctk_dialog_get_content_area(GTK_DIALOG(dialog))), hbox);
+-    
++
+     pixbuf = ctk_widget_render_icon(dialog, CTK_STOCK_DIALOG_QUESTION,
+                                     GTK_ICON_SIZE_DIALOG, NULL);
+     image = gtk_image_new_from_pixbuf(pixbuf);
+     g_object_unref(pixbuf);
+-    
++
+     alignment = gtk_alignment_new(0.0, 0.0, 0, 0);
+     gtk_container_add(GTK_CONTAINER(alignment), image);
+     gtk_box_pack_start(GTK_BOX(hbox), alignment, FALSE, FALSE, 2);
+-    
++
+     label = gtk_label_new("Do you really want to quit?");
+     ctk_window->quit_dialog_pending_label = label;
+     alignment = gtk_alignment_new(0.0, 0.0, 0, 0);
+@@ -1540,7 +1549,7 @@ static void update_display_devices(GtkWi
+     parent_path =
+         gtk_tree_model_get_path(GTK_TREE_MODEL(ctk_window->tree_store),
+                                 &parent_iter);
+-    parent_expanded = 
++    parent_expanded =
+         gtk_tree_view_row_expanded(ctk_window->treeview, parent_path);
+ 
+ 
 --- a/src/src.mk
 +++ b/src/src.mk
 @@ -173,6 +173,7 @@ GTK_SRC += gtk+-2.x/ctkapcrulemodel.c
@@ -842,39 +1000,35 @@ Refreshed for the 410 series
      if (!filename) {
          nv_error_msg("Unable to open configuration file for writing.");
          return NV_FALSE;
---- a/src/gtk+-2.x/ctkui.c
-+++ b/src/gtk+-2.x/ctkui.c
-@@ -49,6 +49,8 @@ void ctk_main(ParsedAttribute *p,
-     gtk_window_set_default_icon_list(list);
-     window = ctk_window_new(p, conf, system);
- 
-+    /* Skip if nvidia is not loaded */
-+    if (system) {
-     if (!system->has_nv_control) {
-         GtkWidget *dlg;
-         dlg = gtk_message_dialog_new (NULL,
-@@ -62,7 +64,7 @@ void ctk_main(ParsedAttribute *p,
-         gtk_dialog_run(GTK_DIALOG(dlg));
-         gtk_widget_destroy (dlg);
-     }
--
-+    }
-     ctk_window_set_active_page(CTK_WINDOW(window), page);
- 
-     gtk_main();
 --- a/src/nvidia-settings.c
 +++ b/src/nvidia-settings.c
-@@ -366,11 +366,11 @@ int main(int argc, char **argv)
-     /* Get the CtrlSystem for this X screen */
+@@ -306,7 +306,7 @@ int main(int argc, char **argv)
+         NvCtrlFreeAllSystems(&systems);
+         return ret ? 0 : 1;
+     }
+-    
++
+     /* initialize the parsed attribute list */
+ 
+     p = nv_parsed_attribute_init();
+@@ -335,7 +335,7 @@ int main(int argc, char **argv)
+     }
+ 
+     /* upload the data from the config file */
+-    
++
+     if (!op->no_load) {
+         ret = nv_read_config_file(op, op->config, op->ctrl_display,
+                                   p, &conf, &systems);
+@@ -367,9 +367,11 @@ int main(int argc, char **argv)
  
      system = NvCtrlGetSystem(op->ctrl_display, &systems);
--
+ 
 +#if 0
-     if (!system || !system->dpy) {
+     if (!system) {
          return 1;
      }
--
 +#endif
+ 
      /* pass control to the gui */
  
-     libdata.fn_ctk_main(p, &conf, system, op->page);
