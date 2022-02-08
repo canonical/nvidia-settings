@@ -1,3 +1,9 @@
+nvidia-settings (510.47.03-0ubuntu1) UNRELEASED; urgency=medium
+
+  * 
+
+ -- Alberto Milone <alberto.milone@canonical.com>  Tue, 08 Feb 2022 09:58:11 +0100
+
 nvidia-settings (470.57.01-0ubuntu4) jammy; urgency=medium
 
   [ Jeremy Szu ]
